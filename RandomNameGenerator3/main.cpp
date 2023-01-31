@@ -3,11 +3,7 @@
 #include <iomanip>
 #include<ctime>
 #include<cstdlib>
-
-#include "MaleName.h"
-#include "FemaleName.h"
-#include "Surname.h"
-#include "NameOrigin.h"
+#include "Generator.h"
 
 using namespace std;
 
@@ -15,7 +11,26 @@ using namespace std;
 int main()
 {
 	srand(time(0));
+	int firstNameCode = 5;
+	int lastNameCode = 6;
+	int count = 25;
+	bool isMale = false;
 
+	Generator test = Generator();
+	vector<string> firstName = test.getFirstName(firstNameCode, count, isMale);
+	vector<string> lastName = test.getSurname(lastNameCode, count);
+	string* nameOrigins = test.getNameOrigins(firstNameCode, lastNameCode);
+
+	for (int i = 0; i < count; i++)
+	{
+		cout << firstName[i] << " " << lastName[i] << endl;
+	}
+
+	cout << "First Name Origins: " << nameOrigins[0] << endl;
+	cout << "Last Name Origins: " << nameOrigins[1] << endl;
+
+
+	/*
 	int select = 1;
 	int selectSurname = 2;
 	int count = 30;
@@ -55,6 +70,7 @@ int main()
 
 	cout << "First Name Origins: " << firstNameOrigins << endl;
 	cout << "Last Name Origins: " << lastNameOrigins << endl;
+	*/
 
 	return 0;
 
