@@ -8,6 +8,12 @@ The C++ Random Name Generator Version 3 is an object-oriented program designed w
 
 --------------
 
+Update 1.02: 2023-01-31
+
+Added new files: Generator.cpp and Generator.h.  Updated main.cpp.
+
+
+
 Update 1.01: 2023-01-30
 
 Added new files: FemaleName.cpp, FemaleName.h, NameOrigin.cpp, NameOrigin.h, Surname.cpp, and Surname.h.  Updated existing files.
