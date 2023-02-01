@@ -3,20 +3,64 @@
 #include <iomanip>
 #include<ctime>
 #include<cstdlib>
+#include<string>
 #include "Generator.h"
-
 using namespace std;
+
+/*
+* C++ Random Name Generator version 3
+* designed by Mark Tasaka 2023
+*/
 
 
 int main()
 {
 	srand(time(0));
-	int firstNameCode = 5;
-	int lastNameCode = 6;
-	int count = 25;
+	int firstNameCode = rand() %50 +1;
+	int lastNameCode = rand() %38 +1;
+	int count = 0;
+	char nameGender;
+	string nameGender2;
 	bool isMale = false;
 
 	Generator test = Generator();
+
+	cout << "Welcome to the Random Name Generator.  The generator has been designed to create a list of randomly generated names." << endl << endl;
+
+	cout << "How many random names would you like to generate?  Please enter an integer." << endl;
+	cin >> count;
+	cout << endl;
+
+	//checks if integre is entered.
+	//if non-integre is entered, re-ask question.
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(256, '\n');
+		cout << "An integer was not entered.  Please enter a integer for the number of random names you would like to randomly generate." << endl;
+		cin >> count;
+		cout << endl;
+
+	}
+
+	cout << "Please enter the Gender of the first name.  Enter M for a Male first name or F for a female first name." << endl;
+	//cin.get(nameGender);
+	getline(cin, nameGender2);
+
+	/*
+	while (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(256, '\n');
+		cout << "Please enter a single character (char)." << endl << endl;
+		cin >> count;
+		cout << endl;
+
+		cout << "Please enter the Gender of the first name.  Enter M for a Male first name or F for a female first name." << endl;
+		cin.get(nameGender);
+
+	}*/
+
 	vector<string> firstName = test.getFirstName(firstNameCode, count, isMale);
 	vector<string> lastName = test.getSurname(lastNameCode, count);
 	string* nameOrigins = test.getNameOrigins(firstNameCode, lastNameCode);
@@ -26,6 +70,7 @@ int main()
 		cout << firstName[i] << " " << lastName[i] << endl;
 	}
 
+	cout << endl;
 	cout << "First Name Origins: " << nameOrigins[0] << endl;
 	cout << "Last Name Origins: " << nameOrigins[1] << endl;
 
