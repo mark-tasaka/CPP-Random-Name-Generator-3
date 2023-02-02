@@ -22,6 +22,7 @@ int main()
 	char nameGender;
 	string nameGender2;
 	bool isMale = false;
+	string nameMessage;
 
 	Generator test = Generator();
 
@@ -44,10 +45,9 @@ int main()
 	}
 
 	cout << "Please enter the Gender of the first name.  Enter M for a Male first name or F for a female first name." << endl;
-	//cin.get(nameGender);
-	getline(cin, nameGender2);
+	cin.get(nameGender);
+	//getline(cin, nameGender2);
 
-	/*
 	while (cin.fail())
 	{
 		cin.clear();
@@ -56,10 +56,28 @@ int main()
 		cin >> count;
 		cout << endl;
 
-		cout << "Please enter the Gender of the first name.  Enter M for a Male first name or F for a female first name." << endl;
+		cout << "Please enter a Char for the Gender of the first name.  Enter M for a Male first name or F for a female first name." << endl;
 		cin.get(nameGender);
+	}
 
-	}*/
+	while (nameGender != 'M' && nameGender != 'm' && nameGender != 'F' && nameGender != 'f')
+	{
+		cout << "Please enter M for a Male first name or F for a female first name." << endl;
+		cin.get(nameGender);
+		cout << endl;
+	}
+
+	if (nameGender == 'M' || nameGender == 'm')
+	{
+		isMale = true;
+		nameMessage = "(Male first names)";
+	}
+	else
+	{
+		nameMessage = "(female first names)";
+	}
+
+	cout << count << " random names " << nameMessage << ": " << endl << endl;
 
 	vector<string> firstName = test.getFirstName(firstNameCode, count, isMale);
 	vector<string> lastName = test.getSurname(lastNameCode, count);
