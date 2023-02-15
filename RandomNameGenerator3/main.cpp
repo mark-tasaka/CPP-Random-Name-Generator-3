@@ -23,10 +23,11 @@ int main()
 	string nameGender2;
 	bool isMale = false;
 	string nameMessage;
+	ofstream textFile;
+	int generateTextFile = 0;
 
-
+	//Smart pointer
 	unique_ptr<Generator> test = make_unique<Generator>();
-	//Generator test = Generator();
 
 	cout << "Welcome to the Random Name Generator.  The generator has been designed to create a list of randomly generated names." << endl << endl;
 
@@ -96,48 +97,44 @@ int main()
 	cout << "First Name Origins: " << nameOrigins[0] << endl;
 	cout << "Last Name Origins: " << nameOrigins[1] << endl;
 
-
-	/*
-	int select = 1;
-	int selectSurname = 2;
-	int count = 30;
-
-	MaleName test1 = MaleName();
-	vector<string> firstName = test1.getFirstName(select, count);
-
-	FemaleName test2 = FemaleName();
-	vector<string> firstNameFemale = test2.getFirstName(select, count);
-
-	Surname test3 = Surname();
-	vector<string> lastName = test3.getSurnames(selectSurname, count);
-
-	NameOrigin test4 = NameOrigin();
-	string lastNameOrigins = test4.getSurnameOrigins(selectSurname);
-	string firstNameOrigins = test4.getFirstNameOrigins(select);
-
-	cout << "Welcome to the Random Name Generator.  The generator has been designed to create a list of randomly generated names." << endl << endl;
-
-	cout << "Male First Names:" << endl;
-
-	for (int i = 0; i < count; i++)
-	{
-		cout << "\t" << firstName[i] << " " << lastName[i] << endl;
-	}
-
-	cout << "First Name Origins: " << firstNameOrigins << endl;
-	cout << "Last Name Origins: " << lastNameOrigins << endl;
-
 	cout << endl;
-	cout << "Female First Names:" << endl;
 
-	for (int i = 0; i < count; i++)
+	cout << "Would you like to create a text file for the random names?  Enter 1 to generate text file, or enter another integer value to end program." << endl;
+	cin >> generateTextFile;
+	cin.get();
+
+	while (!cin.good())
 	{
-		cout << "\t" << firstNameFemale[i] << " " << lastName[i] << endl;
+		cin.clear();
+		cin.ignore();
+
+		cout << "Please enter an integer value" << endl;
 	}
 
-	cout << "First Name Origins: " << firstNameOrigins << endl;
-	cout << "Last Name Origins: " << lastNameOrigins << endl;
-	*/
+	if (generateTextFile == 1)
+	{
+		textFile.open("randomNames.txt");
+
+		textFile << fixed << showpoint;
+		cout << fixed << showpoint;
+
+		textFile << "Random Names: " << count << " random names" << endl << endl;
+
+
+		for (int i = 0; i < firstName.size(); i++)
+		{
+			textFile << setw(12) << setprecision(2) << firstName[i] << setw(12) << setprecision(3) << lastName[i] << endl;
+
+		}
+
+		textFile << endl;
+		textFile << "First Name Origins: " << nameOrigins[0] << endl;
+		textFile << "Last Name Origins: " << nameOrigins[1] << endl;
+
+		cout << "Random name file has been created." << endl;
+	}
+
+	cout << "Thank you for using the Random Name Generator." << endl;
 
 	return 0;
 
