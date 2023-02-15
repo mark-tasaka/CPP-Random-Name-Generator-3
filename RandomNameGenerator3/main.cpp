@@ -24,12 +24,15 @@ int main()
 	bool isMale = false;
 	string nameMessage;
 
-	Generator test = Generator();
+
+	unique_ptr<Generator> test = make_unique<Generator>();
+	//Generator test = Generator();
 
 	cout << "Welcome to the Random Name Generator.  The generator has been designed to create a list of randomly generated names." << endl << endl;
 
 	cout << "How many random names would you like to generate?  Please enter an integer." << endl;
 	cin >> count;
+	cin.get(); //consume newline
 	cout << endl;
 
 	//checks if integre is entered.
@@ -40,6 +43,7 @@ int main()
 		cin.ignore(256, '\n');
 		cout << "An integer was not entered.  Please enter a integer for the number of random names you would like to randomly generate." << endl;
 		cin >> count;
+		cin.get(); //consume newline
 		cout << endl;
 
 	}
@@ -79,9 +83,9 @@ int main()
 
 	cout << count << " random names " << nameMessage << ": " << endl << endl;
 
-	vector<string> firstName = test.getFirstName(firstNameCode, count, isMale);
-	vector<string> lastName = test.getSurname(lastNameCode, count);
-	string* nameOrigins = test.getNameOrigins(firstNameCode, lastNameCode);
+	vector<string> firstName = test->getFirstName(firstNameCode, count, isMale);
+	vector<string> lastName = test->getSurname(lastNameCode, count);
+	string* nameOrigins = test->getNameOrigins(firstNameCode, lastNameCode);
 
 	for (int i = 0; i < count; i++)
 	{
