@@ -12,19 +12,20 @@ using namespace std;
 * designed by Mark Tasaka 2023
 */
 
-void nameGenerator();
+void nameGenerator(int textFileCounter);
 
 int main()
 {
+	int counter = 1;
 	//run program
-	nameGenerator();
+	nameGenerator(counter);
 
 	return 0;
 
 }
 
 
-void nameGenerator()
+void nameGenerator(int textFileCounter)
 {
 	srand(time(0));
 	int firstNameCode = rand() % 50 + 1;
@@ -37,7 +38,7 @@ void nameGenerator()
 	ofstream textFile;
 	int generateTextFile = 0;
 	int continueProgram = 0;
-	int textFileCounter = 1;
+	//int textFileCounter;
 
 	do 
 	{
@@ -113,6 +114,8 @@ void nameGenerator()
 		cout << "Last Name Origins: " << nameOrigins[1] << endl;
 
 		cout << endl;
+
+		generateTextFile = 0;
 
 		cout << "Would you like to create a text file for the random names?  Enter 1 to generate text file, or enter another integer value to end program." << endl;
 		cin >> generateTextFile;
