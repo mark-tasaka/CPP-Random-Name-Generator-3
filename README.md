@@ -9,6 +9,11 @@ The C++ Random Name Generator Version 3 is an object-oriented program designed w
 --------------
 
 
+Update 1.07: 2023-02-16
+
+Cleaned up main.cpp.  Add the option of run the progam again.
+
+
 Update 1.06: 2023-02-15
 
 Added the option of generating a text (txt) file for the randomly generated names.
